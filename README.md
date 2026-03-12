@@ -13,20 +13,26 @@ Two modes are available:
 
 **1. Clone the repo**
 ```bash
-git clone https://github.com/maiida/RAG-for-Question-Answering.git
+git clone https://github.com/maiida/RAG-for-Question-for venAnswering.git
 cd RAG-for-Question-Answering
 ```
 
 **2. Create and activate a virtual environment**
+
+Requires Python 3.10+.
+
 ```bash
 # Create
-python -m venv .venv
+python3.10 -m venv .venv
 
 # Activate — Linux/macOS
 source .venv/bin/activate
 
-# Activate — Windows
+# Activate — Windows (Command Prompt)
 .venv\Scripts\activate
+
+# Activate — Windows (PowerShell)
+.venv\Scripts\Activate.ps1
 ```
 
 **3. Install dependencies**
@@ -51,8 +57,18 @@ python main.py "Who can override network restrictions?" --mode judge --chunking 
 # Rebuild vector store
 python main.py "Your question" --rebuild
 
-# Different model
-python main.py "Your question" --model "Qwen/Qwen3.5-2B"
+
+## Evaluation & Analysis
+
+```bash
+# Run retrieval evaluation (precision & recall per question)
+python evaluate.py
+
+# Evaluate with a specific chunking strategy (default: recursive)
+python evaluate.py --chunking markdown
+
+# Analyze token counts per document
+python -m analysis.token_analysis
 ```
 
 ## Project structure

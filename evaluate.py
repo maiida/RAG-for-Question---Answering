@@ -1,3 +1,4 @@
+import argparse
 import json
 
 import matplotlib.pyplot as plt
@@ -65,6 +66,15 @@ def plot_metrics(recs, precs, keys):
 
 
 if __name__ == "__main__":
-    engine = RAGEngine()
+    parser = argparse.ArgumentParser(description="Evaluate RAG retrieval")
+    parser.add_argument(
+        "--chunking",
+        choices=["recursive", "markdown"],
+        default="recursive",
+        help="Chunking strategy to evaluate"
+    )
+    args = parser.parse_args()
+
+    engine = RAGEngine(chunking_strategy=args.chunking)
     recalls, precisions, question_ids = evaluate_doc_level(engine, "evaluation/evaluation.json")
     plot_metrics(recalls, precisions, question_ids)
