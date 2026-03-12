@@ -1,0 +1,10 @@
+chromadb==1.5.2
+sentence-transformers==5.1.2
+transformers==4.51.3
+accelerate==0.29.3
+langchain-text-splitters==1.1.0
+langchain-core==1.2.12
+langchain-huggingface==1.2.1
+langchain-chroma==1.1.0
+matplotlib==3.8.0
+seaborn==0.13.2
