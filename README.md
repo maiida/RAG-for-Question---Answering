@@ -13,8 +13,8 @@ Two modes are available:
 
 **1. Clone the repo**
 ```bash
-git clone https://github.com/maiida/RAG-for-Question-for venAnswering.git
-cd RAG-for-Question-Answering
+git clone https://github.com/maiida/RAG-for-Question---Answering.git
+cd RAG-for-Question---Answering
 ```
 
 **2. Create and activate a virtual environment**
