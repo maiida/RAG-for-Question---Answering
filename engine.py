@@ -35,7 +35,7 @@ class RAGEngine:
                 selected.append({
                     "text":   doc,
                     "source": meta.get("source", "unknown"),
-                    "score":  1.0 - dist / 2.0,
+                    "score":  1.0 - dist,
                     "tokens": n,
                 })
                 used += n

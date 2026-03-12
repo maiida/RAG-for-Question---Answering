@@ -23,7 +23,10 @@ def build_vectorstore(
 
     if not rebuild and config.chroma_dir.exists():
         client = chromadb.PersistentClient(path=str(config.chroma_dir))
-        col = client.get_or_create_collection(collection_name)
+        col = client.get_or_create_collection(
+            collection_name,
+            metadata={"hnsw:space": "cosine"}
+        )
         if col.count() > 0:
             return col, embed_model
         print(f"  Collection '{collection_name}' is empty — rebuilding...")
@@ -73,7 +76,10 @@ def build_vectorstore(
         shutil.rmtree(config.chroma_dir, ignore_errors=True)
 
     client = chromadb.PersistentClient(path=str(config.chroma_dir))
-    collection = client.get_or_create_collection(collection_name)
+    collection = client.get_or_create_collection(
+        collection_name,
+        metadata={"hnsw:space": "cosine"}
+    )
     collection.add(ids=ids, documents=texts, embeddings=embeddings, metadatas=metadatas)
 
     print(f"\nVector store ready ({len(ids)} chunks)")
